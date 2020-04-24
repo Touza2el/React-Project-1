@@ -1,0 +1,139 @@
+| Web / Mobile App = Combination Of HTML - CSS - Vanilla JavaScript
+| The Only Things The Browser Can Understand is HTML, CSS and JavaScript
+
+| React
+| React App = Parent Component {Collection Of Child Components}
+| React Component 
+
+----- ----- ----- ----- -----
+
+
+| JSX = HTML-Like Tags + JavaScript Code = Combined HTML AND JavaScript to Create User Interfaces (UI)
+
+  # - JSX allows us to create Visuals inside JavaScript,so we can dynamically do things to the HTML-Like elements
+  # - JSX is Language that allows us to easily mix JavaScript and HTML-Like Tags to define how User Interface  
+      elements (Visuals) look like and how they function
+  # - We need to convert JSX to Vanilla JavaScript Code that The Web Browser can understand, we have 2 options:
+      1 - Set Up | Developement Environement | around Node and handful of Build-Tools (Babel, webpack ...)
+      2 - Let Your Browser automatically convert JSX to JavaScript at a runtime, by referencing a script file 
+          this script file takes care of turning the JSX into JavaScript on page load      
+
+  # - React App {JSX} => { Babel } => React App {Vanilla JavaScript} => Web Browser
+
+| 1 - Create HTML Document  
+      Add a reference to React Library                                                      => React Library
+      Add a reference to the various things React needs to work with the DOM                => ReactDOM Library
+      Add a reference to JavaScript Compiler {Babel} allows us to turn JSX into JavaScript  => Babel Library  
+
+| 2 - React 
+
+| 3 - ReactDOM 
+
+| 4 - Display Content On The Web Page Using : ReactDOM.render(param1, param2) Method
+      param1 = The HTML-Like elements = The JSX elements that you want to display on the web page 
+      param2 = The Location in The DOM where React will display The JSX elements
+      const destination = document.querySelector(".app"); // The Reference to the app DOM element
+      ReactDOM.render(<h1>React Developer</h1>, destination);
+      ReactDOM.render(React.createElement(
+        "h1",
+        null,
+        "React Developer"
+      ), destination);
+
+| 5 - Styling The Component Using CSS  
+
+| 6 - Functions 
+      # - The capability to have functions call other functions enables us  to cleanly seperate what Functions do
+      # - We don't need to have one function that does everything under the sun, we can distibute functionality 
+          across many Functions that are specialized to do a specific Task
+      # - Using function to define the Visuals of our App
+
+| 7 - React Component
+      # React Components are reusable chunks of JavaScript that output (via JSX) HTML Elements
+      # App = Collection of Components
+      # Component = a part of the App wrapped inside self-contained module = Visuals + Functionalities
+      # Create React Component => Using The class Syntax
+      | React Document
+
+        React Component = <App/>
+
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>React Developer</title>
+          </head>
+          <body>
+            <div class="app"></div>
+            <script>
+               class App extends React.Component{
+                  render(){
+                    return(
+                      <div>
+                        <h1> React Developer </h1>
+                      <div>
+                  )
+                }
+                }
+                ReactDOM.render(<App/>,   document.querySelector(".app"))  
+            </script>
+          </body>
+        </html>
+
+       # The extends keyword is used to create a child class from a parent class 
+         The child class will inherits all the methods of the parent class  
+       # Our Component does Just One Thing It Prints " React Developer "
+
+| 8 - Styling In React
+
+----- ----- ----- ----- -----
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> React App </title>
+  </head>
+  <body>
+    <div class="app"></div>
+  </body>
+</html>
+
+----- ----- ----- 
+
+ReactDOM.render(<app/>, document.querySelector(".app"));
+
+----- ----- -----
+| Parent Component
+class App extends React.Component{
+ render(){
+  return(
+   <div>
+     <Child/>
+   </div>
+  )
+ }
+}
+
+----- ----- -----
+| Child Component
+class Child extends React.Component{
+ render(){
+  return(
+   <div>
+     <h1> React Developer </h1>
+   </div>
+  )
+ }
+}
+
+| 8 - Properties = Props
+      
+      # - Just as with Functions you can pass to The Component arguments (Properties) that alter the behavior of 
+          Your Component and what it does 
+      # - Adding Properties To Component
+      # - The return statement will print out the value passed in by a property 
+
+      Component  = Function-Like   ===>   <App/>  =  appFunction()   
+      Properties = Parametres      ===>   <App name = "React Developer"/>  =  appFunction(React Developer)
+
+
+

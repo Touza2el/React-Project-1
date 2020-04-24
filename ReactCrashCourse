@@ -1,0 +1,116 @@
+| React = JavaScript Library For Building User Interfaces & Their Functionalities
+
+| JSX Element  =  <div> {Vanilla JavaScript Code} </div> 
+               => Describe What The User Interface of The Application Should look like (Markup)
+               => Has The ability to execute Vanilla JavaScript code inside The HTML Tags
+
+  JSX Element       => const element = <div className="name"> React Developer </div> ;
+
+  React Element     => const element = React.CreateElement(
+                         "div",
+                         {className:"name"},
+                         "React Developer",
+                       )   
+
+  Vanilla JavaScript => const element = {
+                          type:"div",
+                          props:{
+                            className:"name",
+                            children:"React Developer",
+                          }
+                        }                   
+
+
+| React Application =  Collection Of Components
+
+| React Component
+  Component are Like JavaScript Functions They accept Props and return React Element, describe what should appear on The Screen
+
+  function App(){
+    return(
+      <div>
+        <h1>React Developer</h1>
+      </div>
+    )
+  }
+ 
+  const App = () => {
+    return(
+      <div>
+        <h1>React Developer</h1>
+      </div>
+    )
+  }
+
+  class App extends React.Component{
+    render(){
+      return(
+        <div>
+         <h1>React Developer</h1>
+        </div>
+      )
+    }
+  }
+
+| Rendering The App = Display The App in The DOM
+  ReactDOM.render(<App/>, document.querySelector(".app"))
+
+| React Props  =  Properties => Provided by The Parent Component to The Child Component ( They are Unchangeable )
+
+  const App = (props) => {
+    return(
+      <div> 
+       <h1>{props.name}</h1>
+      </div>
+    )
+  }
+
+  ReactDOM.render(<App name="React Developer"/>, document.querySelector(".app));
+
+ class App extends React.Component{
+   render(){
+     return(
+       <div>
+         <h1>{this.props.name}</h1>
+       </div>
+     )
+   }
+ } 
+
+ReactDOM.render(<App name="React Developer"/>, document.querySelector(".app"))
+
+| React State  => Holds Data about The Component ( Every Component has its own State )
+                  We can also use it to store Data that we get from JSON file or from an imput form 
+
+| Methods |
+          |    => Design The Application Functionalities ( Manipulate The User Interfaces )
+| Events  |
+  
+  class App extends React.Component{
+    state = {
+      name : "React Developer",
+    }
+
+    render(){
+      return(
+        <div>
+         <h1>{this.state.name}</h1>
+         <button onClick={this.handleClick}>Click Here</button>
+        <div>
+      )
+    }
+
+    functionName(){ Task }
+
+    handleClick(){ Task }
+  }
+
+| Composition Of The Components
+  The Parent Component refers to Child Components in its output
+
+| Data Stored In JSON => Making Request To Get Data => Storing Data In state
+
+| We can pass Data stored in The State of The Parent Component as Props to The Child Component
+
+| Hooks => The ability to use State and Lifecycle Methods inside Function Component
+ 

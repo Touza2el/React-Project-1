@@ -1,0 +1,451 @@
+| Web Developer - Mobile Developer
+| HTML - CSS - Vanilla JavaScript - React - React Native - NodeJS - MongoDB (Storing Data In The DataBase)
+| Text Editor ( Visual Studio Code )
+
+| React = JavaScript Library For Building User Interfaces (UI) => SPA = The same Page we only change The Content
+| Virtual DOM   => Make Rendering In Every Change Fast & Performance
+| JSX = JavaScript XML
+| Component
+
+----- ----- ----- ----- 
+
+| 1 - Install React Files Using CDN Links
+
+| 2 - Install React Files Using npm = Node Package Manager
+      Install Node
+      Create Folder
+      Open PowerShell window Using (Shift + Right-Click) inside The Created Folder
+      -> npm install -g create-react-app
+      -> create-react-app appone
+      -> cd appone
+      -> npm start ( Open The App in The Browser Window )
+      -> code .    ( Open The App in The Text Editor ( Visual Studio Code ))
+      
+      React Files Structure
+      | node-modules
+      | public
+           index.html => <div class="app"></div>
+      | src
+           index.js   => ReactDOM(<App/>,document.querySelector(.app))
+           App.js     => class App extends React.Component{render(){reurn JSX Element}}
+           index.css
+           App.css
+      | gitignore    
+      | package-lock.json
+      | package.json
+
+     export variableName;          =>     import {variableName} from "./fileName";
+     export default variableName;  =>     import  variableName  from "./fileName";
+
+----- ----- ----- ----- 
+
+| React     => React.createElement() Method & React.Component
+| ReactDOM  => ReactDOM.render() Method
+| Babel     => JSX Element => React Element  => Vanilla JavaScript
+| Webpack
+
+----- ----- ----- -----
+
+| JSX Element        =>   const ourName = <h1 className="title"> React Developer </h1>; // Data = Object
+                          We can run Vanilla JavaScript Code inside JSX Element using { Write JS Code here }
+
+| React Element      =>   const ourName = React.createElement(
+                            type : "h1",
+                            {className:"title"},
+                            "React Developer",   
+                          )
+
+| JavaScript Object  =>   const ourName = {
+                            type:"h1",
+                            props:{
+                              children:"React World",
+                              className:"title",
+                              style:{
+                                color:"#fff",
+                                backgroundColor:"coral",
+                              }
+                            }
+
+                          }     
+
+----- ----- ----- -----
+
+| HTML Document        =>  <body> => <div class="app"></div> => Holds The App Component = <App/> 
+| JavaScript Document  =>  ReactDOM.render(<App/>,document.querySelector(".app"))
+| JavaScript Document  =>  function App(){ return(JSX Element) }
+| JavaScript Document  =>  class App extends React.Component{ render(){ return(JSX Element) } }
+
+----- ----- ----- -----
+
+| 1 - React Component  => return JSX = <div> Content </div>  =>  Box( Content ) 
+
+| Function Component
+  function App(){
+    return(
+      <div>
+        <h1>React Developer</h1>
+      </div>
+    )
+  }
+
+| class Component
+  class App extends React.Component{
+    render(){
+      return(
+        <div>
+          <h1>React Developer</h1>
+        </div>
+      )
+    }
+  }
+
+| 2 - Props ( Properties ) => They can pass Data From Parent Component to Child Component
+      Props => App Component(Props) = <App/ name="React Developer"> = Function(Parameters) = Box(Data)
+      Props => Similar to Function Parametres
+  
+  class App extends React.Component{
+    render(){
+      return(
+        <div>
+          <Child name="React Developer"/>
+        </div>
+      )
+    }
+  }
+  
+  class Child extends React.Component{
+    render(){
+      return(
+        <div>
+          <h1>{this.props.name}</h1>
+        </div>
+      )
+    }
+  }
+
+| 3 - State = JavaScript Object-Like = Holds Data About Component
+      State = Similar to Variable declared within a Function
+      Each Component has its Own State = Data : state = {name:"Hassa", username:"Touza2el", skill:"Developer"}
+      We can pass a State of The current App Component as a Props To The Child Component
+
+  class App extends React.Component{
+    state = {
+      name : "Touza2el",
+      skill: "Web / Mobile Developer"
+    }
+    render(){
+      return(
+        <div>
+          <h1>{this.state.name}</h1>
+          <Child/ title = {this.state.skill}>
+        </div>
+      )
+    }
+  }
+
+  class Child extends React.Component{
+    render(){
+      return(
+        <div>
+          <h2>{this.props.title}</h2>
+        </div>
+      )
+    }
+  }    
+  
+  | Change State
+    this.setState({
+      name:"Hassan",
+      skill:"React Developer"
+    })
+  | Statefull Component = Class Based Component + State
+    We use it, when we want to store Data and manipulating our UI using This Data
+    We use it, to display The Data stored in the state in The (UI)  
+    
+  | Stateless Component = No State => Good Practice to declare it using Function Based Component
+    We also call it ( UI Component ) because we use it only to Draw The User Interface (UI)
+    if we want to draw only The (UI), we use Function Based Component 
+    
+----- ----- ----- ----- 
+
+| App Component = <App/> = JavaScript Function => Return ( <div> Content </div> ) = Box ( Content )
+  <App/> = Like Function Call = FunctionName()
+  Props  = Like Function Parameters // Object
+  State  = Like Variable Declared Within a Function // Object
+
+----- ----- ----- -----
+
+| 4 - Nested Components
+
+  class App extends React.Component{
+    render(){
+      return(
+        <div>
+          <Child/>
+        </div>
+      )
+    }
+  }
+ 
+  class Child extends React.Component{
+    render(){
+      return(
+        <div>
+          <h1>React Developer</h1>
+        </div>
+      )
+    }
+  }
+
+  App Component = Collection Of Child Components
+  <App Component>
+    <Child Component 1>
+    <Child Component 2>
+    <Child Component 3>
+  <App Component>
+
+| 5 - React Events 
+      class App extends React.Component{
+        ourFunction = ()=>{
+          console.log("Clicked");
+        }
+        render(){
+          return(
+            <div>
+              <h1>React Developer<h1>
+              <button onClick = {this.ourFunction}>Click</button>
+            </div>
+          )
+        }
+      }
+
+| 6 - React List Data Using Map Method( Loop Through Array Of Objects ) = Display Data On The Browser
+  
+      ObjectName = {
+        name : "Hassan",
+        age : 28
+      }
+      
+    | const name = ObjectName.name    Or   => | const {name} = ObjectName.name
+
+
+    | const name =  ObjectName.name
+    |                                  Or  => | const {name,age} = ObjectName
+    | const age  =  ObjectName.age
+
+    ----- -----
+    
+    class App extends React.Component{
+      render(){
+        return(
+          <div>
+            <Child id="1" name="Hassan" age="28"/>
+          </div>
+        )
+      }
+    }
+    
+    class Child extends React.Component{
+      render(){
+        const {id,name,age} = this.props;
+        return(
+          <div>
+            <p>{id}</p>
+            <p>{name}</p>
+            <p>{age}</p>
+          </div>
+        )
+      }
+    }
+
+
+    ----- -----
+
+    | Data  items = [
+              {id:2, name:"Yassine", age:25},
+              {id:1, name:"Hassan", age:28},
+              {id:3, name:"Driss", age:22}
+            ]  
+
+    | we want to display this Data in The Browser
+      First we have to store This Data in a State
+
+    class App extends React.Component{
+      state = {
+        items = [
+           {id:1, name:"Yassine", age:25},
+           {id:2, name:"Hassan", age:28},
+           {id:3, name:"Driss", age:22}
+       ] 
+      }
+      render(){
+        return(
+          <div>
+            <Child/ items={this.state.items}>
+          </div> 
+        )
+      }
+    }  
+
+    class Child React.Component{
+      render(){
+        const {Items} = this.props; // Array Of Objects
+        const manipulateItems = Items.map((item) => {
+          return(
+            <div>
+              <p>{item.id}</p>
+              <p>{item.name}</p>
+              <p>{item.age}</p>
+            </div>
+          )
+        })
+        return(
+          <div>
+            {manipulateItems}
+          </div>
+        )
+      }
+    }
+
+  !!! Each item should have a different Key   <div key={item.id}>   Or  <div key={Math.random() * 10}
+                                                <p>{item.id}</p>
+                                                <p>{item.name}</p>
+                                                <p>{item.age}</p>
+                                              </div>
+
+| 7 - Forms In React
+
+| 8 - Condition In React
+      if (condition) {return(JSX1)} else {return(JSX2)}
+      return (condition) ? (JSX1) : (JSX2)
+      
+| 9 - Styling In React (Using CSS)
+
+| 10 - Handling Events
+       
+       # Using bind-this Method
+         handleClick(){ Task }
+         <button onClick={this.handleClick.bind(this)}>Click</button>
+
+       # Using Arrow Function Method
+         handleClick = () => { Task }
+         <button onClick={this.handleClick}>Click</button>
+         
+| 11 - Component Lifecycle Methods => Functions do a specific Task in React Component
+       
+       | Constructor
+         Each Class has a Constructor, The First Method That run after a Class Work
+         we need to call The super() Function inside The Constructor Method in order The Constructor Method run
+
+       | render
+         The render() Method is The second Method That run after The Constructor Method
+         The render() Method allow us to  | display The Content On The Screen |
+
+       | componentDidMount
+         The componentDidMount() Method run after The Component load and displayed On The Page
+
+       | componentDidUpdate 
+         The componentDidUpdate() Method Take prevProps and prevState as Parameters
+         => componentDidUpdate(prevProps,prevState){}
+
+| 12 - React Router =>  When we click on Home Or About The Equivalent Component Displayed
+       Install | React Router | => npm i react-router-dom
+       import { BrowserRouter, Route } from "react-router-dom";
+
+      | The App Component
+        class App extends Component {
+          render() {
+            return (
+              <BrowserRouter>
+                <div>
+                  <Navbar />
+                  <Route exact path="/" component={Home} />
+                  <Route path="/About" component={About} />
+                </div>
+              </BrowserRouter>
+            );
+          }
+        }
+
+      | The Nav Component  
+        const Navbar = () => {
+          return (
+            <div className="navbar">
+              <h2>Logo</h2>
+              <ul>
+                <a href="/">Home</a>
+                <a href="/About">About</a>
+              </ul>
+            </div>
+          );
+        };
+
+      | The Home Component
+        const Home = () => {
+          return (
+            <div>
+              <h2>Home</h2>
+              <p>Welcome, This is The Home Section ...</p>
+            </div>
+          );
+        };  
+              
+      | The About Component
+        const About = () => {
+          return (
+            <div>
+              <h2>About</h2>
+              <p>Welcome, This is The About Section ...</p>
+            </div>
+          );
+        };
+
+| 13 - Prevent Reload Using NavLink
+       import {Link,NavLink} from "react-router-dom";
+       change a => Link or NavLink & href => to
+
+       The difference between Link and NavLink is That The NavLink add active class to clicked link  
+
+| 14 - Dealing With Request (http Request) Using Axios
+       How we deal with External Link Like API and get Data from it and Display it in Our Page
+
+       import React, { Component } from "react";
+       import axios from "axios";
+
+        class Blog extends Component {
+          state = {
+            users: [],
+          };
+          componentDidMount() {
+            axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+              this.setState({
+                users: res.data,
+              });
+            });
+          }
+          render() {
+            return (
+              <div key={user.id}>
+                <h2>Blog</h2>
+                <p>Welcome, This is Blog Section ...</p>
+                <div>
+                  {this.state.users.map((user) => (
+                    <div>{user.name}</div>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+        }
+
+  | 15 - Route Params 
+
+  | 16 - React Fragment  => <Fragment> </Fragment>  =  <React.Fragment> </React.Fragment>  =  <> </>
+
+  | 17 - How To Show Images In React 
+         
+                   
+
+
+   
+  
